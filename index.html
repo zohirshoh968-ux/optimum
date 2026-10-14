@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Optimum o'quv markazi — bilim, maqsad va kelajak sari.">
+  <title>Optimum — O'quv markazi</title>
+  <link rel="icon" href="optimum.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { optimum: { black: '#0a0a0a', yellow: '#FFD700' } } } }
+    };
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+  <header class="site-header">
+    <nav class="nav-wrap container">
+      <a href="#home" class="brand" aria-label="Optimum bosh sahifa">
+        <span class="brand-mark" aria-hidden="true">O</span>
+        <span>Optimum<span class="brand-dot">.</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menyuni ochish" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#teachers">Ustozlar haqida</a>
+        <a href="#courses">Kurslar</a>
+        <a href="#announcements">E'lonlar</a>
+        <a href="#tests">Testlar</a>
+        <button class="nav-admin" id="openAdminBtn">Admin panel ↗</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <p class="eyebrow"><span></span> BILIMDAN NATIJAGA</p>
+        <h1>Kelajagingizni<br><em>bugundan</em> boshlang.</h1>
+        <p class="hero-copy">Optimum — maqsadlaringizga yaqinlashtiradigan bilim, tajriba va ilhom maskani. O'zingizga mos yo'nalishni tanlang va yangi imkoniyatlar sari qadam qo'ying.</p>
+        <div class="hero-actions">
+          <a class="btn btn-yellow" href="#courses">Kurslarni ko'rish <span>↘</span></a>
+          <a class="btn btn-ghost" href="#about">Biz haqimizda</a>
+        </div>
+        <div class="hero-note"><span class="pulse-dot"></span> Har kuni yangi imkoniyat</div>
+      </div>
+      <div class="hero-stamp" aria-hidden="true"><span>LEARN</span><b>•</b><span>GROW</span><b>•</b><span>ACHIEVE</span></div>
+    </section>
+
+    <section class="stats container" id="about">
+      <div><strong>01</strong><span>Maqsadga yo'naltirilgan ta'lim</span></div>
+      <div><strong>02</strong><span>Amaliy bilim va ko'nikmalar</span></div>
+      <div><strong>03</strong><span>O'sish uchun doimiy imkoniyat</span></div>
+    </section>
+
+    <section class="section container" id="courses">
+      <div class="section-heading">
+        <div><p class="eyebrow">O'ZINGIZNI RIVOJLANTIRING</p><h2>Bizning <em>kurslar</em></h2></div>
+        <p>Qiziqishingizga mos yo'nalishni tanlang. Birinchi qadamni bugun qo'ying.</p>
+      </div>
+      <div id="coursesGrid" class="cards-grid"></div>
+      <div id="coursesEmpty" class="empty-state hidden">Hozircha kurslar qo'shilmagan. Tez orada yangilarini kuting!</div>
+    </section>
+
+    <section class="section dark-section" id="teachers">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">TAJRIBA VA ILHOM</p><h2>Bizning <em>ustozlar</em></h2></div>
+          <p>O'z bilim va tajribasini siz bilan bo'lishishga tayyor mutaxassislar.</p>
+        </div>
+        <div id="teachersGrid" class="cards-grid teachers-grid"></div>
+        <div id="teachersEmpty" class="empty-state hidden">Ustozlar ro'yxati hozircha bo'sh.</div>
+      </div>
+    </section>
+
+    <section class="section container" id="announcements">
+      <div class="section-heading">
+        <div><p class="eyebrow">YANGILIKLARDAN XABARDOR BO'LING</p><h2>So'nggi <em>e'lonlar</em></h2></div>
+        <p>Markazdagi yangiliklar, tadbirlar va muhim xabarlar shu yerda.</p>
+      </div>
+      <div id="announcementsGrid" class="cards-grid announcements-grid"></div>
+      <div id="announcementsEmpty" class="empty-state hidden">Hozircha e'lonlar yo'q.</div>
+    </section>
+
+    <section class="section tests-section" id="tests">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">BILIMINGIZNI SINAB KO'RING</p><h2>Mini <em>testlar</em></h2></div>
+          <p>Testni tanlang, savollarga javob bering va natijangizni darhol biling.</p>
+        </div>
+        <div id="testsGrid" class="test-list"></div>
+        <div id="testsEmpty" class="empty-state hidden">Hozircha testlar qo'shilmagan.</div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container cta-inner">
+        <div><p class="eyebrow">BIRINCHI QADAMNI QO'YING</p><h2>O'sish uchun eng yaxshi vaqt — <em>hozir.</em></h2></div>
+        <a href="#courses" class="btn btn-yellow">Kurslarni tanlash <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <a href="#home" class="brand"><span class="brand-mark">O</span><span>Optimum<span class="brand-dot">.</span></span></a>
+      <p>Bilim sari dadil qadam. Kelajagingiz shu yerdan boshlanadi.</p>
+      <div class="footer-links">
+        <a href="#teachers">Ustozlar</a><a href="#courses">Kurslar</a><a href="#announcements">E'lonlar</a><a href="#tests">Testlar</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> Optimum o'quv markazi</span>
+      <div><a href="https://t.me/optimum_LA" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a href="https://instagram.com/optimum.la" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="tel:+998999986421">+998 (99)-998-64-21</a></div>
+    </div>
+  </footer>
+
+  <!-- Registration modal -->
+  <div class="modal-backdrop hidden" id="registrationModal" role="dialog" aria-modal="true" aria-labelledby="registrationTitle">
+    <div class="modal-card registration-card">
+      <button class="modal-close" data-close="registrationModal" aria-label="Yopish">×</button>
+      <div class="modal-symbol">O<span>.</span></div>
+      <p class="eyebrow">OPTIMUM JAMOASIGA XUSH KELIBSIZ</p>
+      <h2 id="registrationTitle">Avval tanishib <em>olaylik.</em></h2>
+      <p class="muted">Davom etish uchun ma'lumotlaringizni kiriting.</p>
+      <form id="registrationForm" class="form-stack">
+        <label>Ismingiz<input name="firstName" autocomplete="given-name" required maxlength="60" placeholder="Masalan, Ali"></label>
+        <label>Familiyangiz<input name="lastName" autocomplete="family-name" required maxlength="60" placeholder="Masalan, Valiyev"></label>
+        <label>Telefon raqamingiz<input name="phone" type="tel" autocomplete="tel" required maxlength="25" placeholder="+998 90 123 45 67"></label>
+        <button class="btn btn-yellow full-width" type="submit">Davom etish <span>→</span></button>
+      </form>
+      <p class="fine-print">Ma'lumotlar ushbu brauzerda saqlanadi.</p>
+    </div>
+  </div>
+
+  <!-- Admin login modal -->
+  <div class="modal-backdrop hidden" id="adminLoginModal" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle">
+    <div class="modal-card login-card">
+      <button class="modal-close" data-close="adminLoginModal" aria-label="Yopish">×</button>
+      <div class="modal-symbol">O<span>.</span></div>
+      <p class="eyebrow">BOSHQARUV MARKAZI</p>
+      <h2 id="adminLoginTitle">Admin <em>kirishi</em></h2>
+      <form id="adminLoginForm" class="form-stack">
+        <label>Admin paroli<input name="password" type="password" required autocomplete="current-password" placeholder="Parolni kiriting"></label>
+        <p id="adminLoginError" class="form-error hidden">Parol noto'g'ri. Qayta urinib ko'ring.</p>
+        <button class="btn btn-yellow full-width" type="submit">Panelga kirish <span>→</span></button>
+      </form>
+      <p class="fine-print">Demo loyiha: parol brauzer ichida tekshiriladi.</p>
+    </div>
+  </div>
+
+  <!-- Test modal -->
+  <div class="modal-backdrop hidden" id="testModal" role="dialog" aria-modal="true" aria-labelledby="testModalTitle">
+    <div class="modal-card test-modal-card">
+      <button class="modal-close" data-close="testModal" aria-label="Yopish">×</button>
+      <div id="testModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Admin panel -->
+  <div class="admin-shell hidden" id="adminPanel">
+    <aside class="admin-sidebar">
+      <a href="#home" class="brand admin-brand"><span class="brand-mark">O</span><span>Optimum<span class="brand-dot">.</span></span></a>
+      <p class="sidebar-label">BOSHQARUV</p>
+      <button class="admin-nav active" data-admin-tab="dashboard">▦ <span>Umumiy</span></button>
+      <button class="admin-nav" data-admin-tab="users">♙ <span>Foydalanuvchilar</span><b id="userCountBadge">0</b></button>
+      <button class="admin-nav" data-admin-tab="courses">▤ <span>Kurslar</span></button>
+      <button class="admin-nav" data-admin-tab="teachers">♧ <span>Ustozlar</span></button>
+      <button class="admin-nav" data-admin-tab="announcements">◉ <span>E'lonlar</span></button>
+      <button class="admin-nav" data-admin-tab="tests">☷ <span>Testlar</span></button>
+      <button class="admin-nav" data-admin-tab="enrollments">↗ <span>Kursga yozilganlar</span><b id="enrollmentCountBadge">0</b></button>
+      <button class="admin-nav" data-admin-tab="settings">⚙ <span>Sozlamalar</span></button>
+      <div class="sidebar-bottom"><span class="admin-status-dot"></span> Lokal boshqaruv rejimi</div>
+    </aside>
+    <section class="admin-main">
+      <header class="admin-topbar">
+        <div><button class="admin-back" id="closeAdminBtn">← Saytga qaytish</button><h1 id="adminPageTitle">Umumiy ko'rinish</h1></div>
+        <div class="admin-user"><span class="admin-avatar">A</span><span><b>Administrator</b><small>Admin</small></span></div>
+      </header>
+      <div class="admin-content">
+        <section class="admin-tab active" id="admin-dashboard">
+          <div class="admin-welcome"><div><p class="eyebrow">OPTIMUM ADMIN</p><h2>Xush kelibsiz, <em>admin.</em></h2><p>Markaz saytidagi ma'lumotlarni shu panel orqali boshqaring.</p></div><div class="welcome-icon">✳</div></div>
+          <div class="metric-grid">
+            <div class="metric-card"><span>Foydalanuvchilar</span><strong id="metricUsers">0</strong><small>Ro'yxatdan o'tganlar</small></div>
+            <div class="metric-card"><span>Kurslar</span><strong id="metricCourses">0</strong><small>Faol kurslar</small></div>
+            <div class="metric-card"><span>Ustozlar</span><strong id="metricTeachers">0</strong><small>Jamoa a'zolari</small></div>
+            <div class="metric-card"><span>Yozilish so'rovlari</span><strong id="metricEnrollments">0</strong><small>Barcha so'rovlar</small></div>
+          </div>
+          <div class="admin-panel-card"><div class="admin-card-heading"><div><h3>Tezkor amallar</h3><p>Kerakli bo'limga o'ting</p></div></div><div class="quick-actions"><button data-admin-tab="courses">＋ Kurs qo'shish</button><button data-admin-tab="teachers">＋ Ustoz qo'shish</button><button data-admin-tab="announcements">＋ E'lon qo'shish</button><button data-admin-tab="tests">＋ Test yaratish</button></div></div>
+          <div class="admin-panel-card"><div class="admin-card-heading"><div><h3>So'nggi yozilishlar</h3><p>Yangi kurs so'rovlari</p></div><button class="text-button" data-admin-tab="enrollments">Barchasini ko'rish →</button></div><div id="recentEnrollments"></div></div>
+        </section>
+
+        <section class="admin-tab" id="admin-users">
+          <div class="admin-section-head"><div><h2>Foydalanuvchilar</h2><p>Ushbu brauzerda ro'yxatdan o'tgan foydalanuvchilar.</p></div><button class="btn btn-dark-outline" id="exportUsersBtn">CSV yuklash ↓</button></div>
+          <div class="admin-panel-card"><div class="table-wrap"><table><thead><tr><th>#</th><th>Ism</th><th>Familiya</th><th>Telefon</th><th>Ro'yxatdan o'tgan</th></tr></thead><tbody id="usersTableBody"></tbody></table></div><div id="usersEmpty" class="table-empty hidden">Foydalanuvchilar hali yo'q.</div></div>
+        </section>
+
+        <section class="admin-tab" id="admin-courses">
+          <div class="admin-section-head"><div><h2>Kurslar</h2><p>Kurslarni qo'shing yoki olib tashlang.</p></div></div>
+          <div class="admin-columns">
+            <form id="courseForm" class="admin-panel-card admin-form">
+              <h3>Yangi kurs</h3>
+              <label>Kurs nomi<input name="title" required maxlength="90" placeholder="Frontend dasturlash"></label>
+              <label>Qisqacha tavsif<textarea name="description" required rows="3" maxlength="400" placeholder="Kurs haqida qisqacha..."></textarea></label>
+              <div class="form-two"><label>Davomiyligi<input name="duration" maxlength="50" placeholder="4 oy"></label><label>Narxi<input name="price" maxlength="50" placeholder="450 000 so'm/oy"></label></div>
+              <label>Rasm URL (ixtiyoriy)<input name="image" type="url" placeholder="https://..."></label>
+              <button class="btn btn-yellow" type="submit">＋ Kurs qo'shish</button>
+            </form>
+            <div class="admin-panel-card"><div class="admin-card-heading"><div><h3>Mavjud kurslar</h3><p id="adminCoursesCount">0 ta kurs</p></div></div><div id="adminCoursesList" class="manage-list"></div></div>
+          </div>
+        </section>
+
+        <section class="admin-tab" id="admin-teachers">
+          <div class="admin-section-head"><div><h2>Ustozlar</h2><p>Jamoangiz haqida ma'lumot kiriting.</p></div></div>
+          <div class="admin-columns">
+            <form id="teacherForm" class="admin-panel-card admin-form">
+              <h3>Yangi ustoz</h3>
+              <label>Ism-familiya<input name="name" required maxlength="100" placeholder="Ism Familiya"></label>
+              <label>Yo'nalishi<input name="subject" required maxlength="100" placeholder="Matematika ustozı"></label>
+              <label>Tajriba / tavsif<textarea name="bio" rows="3" maxlength="300" placeholder="Ustoz haqida qisqacha..."></textarea></label>
+              <label>Rasm URL (ixtiyoriy)<input name="image" type="url" placeholder="https://..."></label>
+              <button class="btn btn-yellow" type="submit">＋ Ustoz qo'shish</button>
+            </form>
+            <div class="admin-panel-card"><div class="admin-card-heading"><div><h3>Ustozlar ro'yxati</h3></div></div><div id="adminTeachersList" class="manage-list"></div></div>
+          </div>
+        </section>
+
+        <section class="admin-tab" id="admin-announcements">
+          <div class="admin-section-head"><div><h2>E'lonlar</h2><p>Matn, rasm yoki video havolasi bilan e'lon joylang.</p></div></div>
+          <div class="admin-columns">
+            <form id="announcementForm" class="admin-panel-card admin-form">
+              <h3>Yangi e'lon</h3>
+              <label>Sarlavha<input name="title" required maxlength="100" placeholder="Yangi guruh ochildi!"></label>
+              <label>Matn<textarea name="text" required rows="4" maxlength="700" placeholder="E'lon tafsilotlari..."></textarea></label>
+              <label>Rasm URL (ixtiyoriy)<input name="image" type="url" placeholder="https://..."></label>
+              <label>Havola yoki video URL (ixtiyoriy)<input name="link" type="url" placeholder="https://..."></label>
+              <button class="btn btn-yellow" type="submit">＋ E'lon qo'shish</button>
+            </form>
+            <div class="admin-panel-card"><div class="admin-card-heading"><div><h3>Mavjud e'lonlar</h3></div></div><div id="adminAnnouncementsList" class="manage-list"></div></div>
+          </div>
+        </section>
+
+        <section class="admin-tab" id="admin-tests">
+          <div class="admin-section-head"><div><h2>Testlar</h2><p>Har savol uchun variantlar va ball miqdorini belgilang.</p></div></div>
+          <form id="testForm" class="admin-panel-card admin-form test-builder">
+            <h3>Yangi test yaratish</h3>
+            <label>Test nomi<input name="title" required maxlength="100" placeholder="JavaScript asoslari"></label>
+            <div id="questionBuilder"></div>
+            <button class="btn btn-dark-outline" id="addQuestionBtn" type="button">＋ Savol qo'shish</button>
+            <button class="btn btn-yellow" type="submit">Testni saqlash</button>
+          </form>
+          <div class="admin-panel-card"><div class="admin-card-heading"><div><h3>Mavjud testlar</h3></div></div><div id="adminTestsList" class="manage-list"></div></div>
+        </section>
+
+        <section class="admin-tab" id="admin-enrollments">
+          <div class="admin-section-head"><div><h2>Kursga yozilganlar</h2><p>Foydalanuvchilar tasdiqlagan yozilish so'rovlari.</p></div></div>
+          <div class="admin-panel-card"><div class="table-wrap"><table><thead><tr><th>Foydalanuvchi</th><th>Telefon</th><th>Kurs</th><th>Sana</th><th>Holat</th></tr></thead><tbody id="enrollmentsTableBody"></tbody></table></div><div id="enrollmentsEmpty" class="table-empty hidden">Hali yozilish so'rovlari yo'q.</div></div>
+        </section>
+
+        <section class="admin-tab" id="admin-settings">
+          <div class="admin-section-head"><div><h2>Sozlamalar</h2><p>Admin paneli parolini o'zgartiring.</p></div></div>
+          <form id="passwordForm" class="admin-panel-card admin-form settings-form">
+            <h3>Parolni yangilash</h3>
+            <label>Joriy parol<input name="currentPassword" type="password" required></label>
+            <label>Yangi parol<input name="newPassword" type="password" required minlength="4" maxlength="100"></label>
+            <label>Yangi parolni tasdiqlang<input name="confirmPassword" type="password" required minlength="4" maxlength="100"></label>
+            <button class="btn btn-yellow" type="submit">Parolni o'zgartirish</button>
+            <p class="fine-print">Eslatma: bu demo parol localStorage'da saqlanadi va xavfsiz server autentifikatsiyasi emas.</p>
+          </form>
+          <div class="admin-panel-card danger-zone"><h3>Demo ma'lumotlari</h3><p>Saytdagi barcha demo ma'lumotlarni o'chirish mumkin. Bu amalni ortga qaytarib bo'lmaydi.</p><button class="btn btn-danger" id="resetDataBtn">Barcha ma'lumotlarni tozalash</button></div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
